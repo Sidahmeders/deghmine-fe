@@ -18,6 +18,7 @@ import {
 } from '@chakra-ui/react'
 import { isValid } from 'date-fns'
 
+import { AppointmentsState } from '@context'
 import { getLocalUser } from '@utils'
 import { CREATE_PATIENT_NAMES } from '@config'
 import { createPatient } from '@services/patients'
@@ -25,7 +26,8 @@ import { useState } from 'react'
 
 const initialValues = Object.values(CREATE_PATIENT_NAMES).reduce((prev, curr) => ({ ...prev, [curr]: '' }), {})
 
-export default function AddPatientModal({ setPatientsData }) {
+export default function AddPatientModal({ children }) {
+  const { setPatientsData } = AppointmentsState()
   const localUser = getLocalUser()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const toast = useToast()
@@ -56,10 +58,7 @@ export default function AddPatientModal({ setPatientsData }) {
 
   return (
     <>
-      <Button p="6" bg="#474aff" color="#fff" _hover={{ backgroundColor: '#6568f8' }} onClick={onOpen}>
-        Créer patient
-      </Button>
-
+      <span onClick={onOpen}>{children}</span>
       <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay bg="blackAlpha.400" backdropFilter="blur(10px)" />
         <ModalContent>

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Cast, Calendar, PieChart, UserPlus } from 'react-feather'
+import { Button } from '@chakra-ui/react'
 import { getPageRoute, setPageRoute } from '@utils'
 import { APP_ROUTES } from '@config'
-// import ChatNotification from '../miscellaneous/ChatNotification'
 import PatientListModal from '../PatientsListModal/PatientsListModal'
 import AddPatientModal from '../PatientsListModal/AddPatientModal'
 import './TopNavigation.scss'
@@ -35,12 +35,6 @@ export default function TopNavigation() {
     setSelectedRoute(getPageRoute())
   }, [location.pathname])
 
-  // const {
-  //   isOpen: isAddPatientsModalOpen,
-  //   onOpen: onAddPatientsModalOpen,
-  //   onClose: onAddPatientsModalClose,
-  // } = useDisclosure()
-
   return (
     <div
       className={`top-navigation-container ${isDragging ? 'dragging' : ''}`}
@@ -52,30 +46,29 @@ export default function TopNavigation() {
         to={APP_ROUTES.TODAY_PATIENTS_LIST}>
         <Cast />
       </Link>
-
       <Link
         className={`${selectedRoute === APP_ROUTES.CALENDAR ? 'selected' : ''}`}
         onClick={() => setPageRoute(APP_ROUTES.CALENDAR)}
         to={APP_ROUTES.CALENDAR}>
         <Calendar />
       </Link>
-
       <Link
         className={`${selectedRoute === APP_ROUTES.STATISTICS ? 'selected' : ''}`}
         onClick={() => setPageRoute(APP_ROUTES.STATISTICS)}
         to={APP_ROUTES.STATISTICS}>
         <PieChart />
       </Link>
-
       <Link>
         <PatientListModal />
       </Link>
-
       <Link>
-        <>
-          <UserPlus onClick={'onAddPatientsModalOpen'} color="green" />
-          <AddPatientModal />
-        </>
+        <AddPatientModal
+          children={
+            <Button p={0} m={0} size={0} bg="#fff0" color="#fff0" _hover={{ backgroundColor: '#fff0' }}>
+              <UserPlus color="green" />
+            </Button>
+          }
+        />
       </Link>
     </div>
   )

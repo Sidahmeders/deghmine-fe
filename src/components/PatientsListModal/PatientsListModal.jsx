@@ -9,9 +9,11 @@ import {
   ModalCloseButton,
   HStack,
   useToast,
+  Button,
 } from '@chakra-ui/react'
 import { Users } from 'react-feather'
 
+import { AppointmentsState } from '@context'
 import { setPatient } from '@utils'
 import { PAGINATION_ROWS_PER_PAGE_OPTIONS } from '@config'
 import { fetchPatients } from '@services/patients'
@@ -28,6 +30,7 @@ import AddPatientModal from './AddPatientModal'
 import './PatientsListModal.scss'
 
 export default function PatientListModal() {
+  const { patientsData, setPatientsData } = AppointmentsState()
   const toast = useToast()
   const { isOpen: isPatientsModalOpen, onOpen: onPatientsModalOpen, onClose: onPatientsModalClose } = useDisclosure()
   const { isOpen: isEditModalOpen, onOpen: onEditModalOpen, onClose: ondEditModalClose } = useDisclosure()
@@ -38,7 +41,6 @@ export default function PatientListModal() {
     onClose: onPatientFollowupsModalClose,
   } = useDisclosure()
 
-  const [patientsData, setPatientsData] = useState([])
   const [pageNumber, setPageNumber] = useState(0)
   const [pageSize, setPageSize] = useState(PAGINATION_ROWS_PER_PAGE_OPTIONS[0])
   const [filterText, setFilterText] = useState('')
@@ -77,7 +79,13 @@ export default function PatientListModal() {
     return (
       <HStack width="100%">
         <SearchBar onFilter={handleFilter} onClear={handleClear} filterText={filterText} />
-        <AddPatientModal setPatientsData={setPatientsData} />
+        <AddPatientModal
+          children={
+            <Button p="6" bg="#474aff" color="#fff" _hover={{ backgroundColor: '#6568f8' }}>
+              Créer patient
+            </Button>
+          }
+        />
       </HStack>
     )
   }, [filterText, resetPaginationToggle])
