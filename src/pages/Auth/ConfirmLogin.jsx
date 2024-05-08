@@ -30,8 +30,8 @@ const ConfirmLogin = () => {
       setLocalUser(userData)
       toast({ title: 'utilisateur authentifié avec succès', status: 'success' })
       setTimeout(() => {
-        setPageRoute(APP_ROUTES.CHATS)
-        window.location = APP_ROUTES.CHATS
+        setPageRoute(APP_ROUTES.TODAY_PATIENTS_LIST)
+        window.location = APP_ROUTES.TODAY_PATIENTS_LIST
       }, 500)
     } catch (error) {
       toast({ description: error.message })

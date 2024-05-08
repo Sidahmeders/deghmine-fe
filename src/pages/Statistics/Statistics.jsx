@@ -3,7 +3,6 @@ import { Card, CardBody, Stack, HStack } from '@chakra-ui/react'
 import PaymentRatio from './PaymentRatio'
 import RevenuChart from './RevenuChart/RevenuChart'
 import MotifPaymentRatio from './MotifPaymentRatio/MotifPaymentRatio'
-import WorkLoadChart from './WorkLoadChart'
 import PatientAgeRatio from './PatientAgeRatio/PatientAgeRatio'
 import PatientsCount from './PatientsCount'
 
@@ -35,12 +34,6 @@ const Statistics = () => (
     <Card>
       <CardBody display="flex" justifyContent="center">
         <RevenuChart />
-      </CardBody>
-    </Card>
-
-    <Card>
-      <CardBody>
-        <WorkLoadChart />
       </CardBody>
     </Card>
   </Stack>
