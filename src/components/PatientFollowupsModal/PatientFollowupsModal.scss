@@ -1,0 +1,47 @@
+.patient-followups-modal-container {
+  .patient-followups-modal-body {
+    min-height: 360px;
+  }
+
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 2rem;
+
+    caption {
+      text-align: left;
+
+      span {
+        color: blue;
+      }
+    }
+
+    tbody tr {
+      :nth-child(1) {
+        width: 50%;
+      }
+      :nth-child(2) {
+        width: 20%;
+      }
+      :nth-child(3) {
+        color: 10%;
+      }
+      :nth-child(4) {
+        color: 20%;
+      }
+    }
+
+    td,
+    th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+      outline-color: #587ee9;
+    }
+
+    tr:nth-child(even) {
+      background-color: #ddd3;
+    }
+  }
+}

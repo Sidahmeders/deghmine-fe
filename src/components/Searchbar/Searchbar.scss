@@ -1,0 +1,39 @@
+#input-label {
+  display: none;
+}
+
+.input-wrap {
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  border-radius: 6px;
+  background: #474aff;
+}
+
+.input-wrap .search-icon {
+  font-size: 1.5rem;
+  color: white;
+}
+
+#patient-search {
+  font-size: 14px;
+  color: white;
+  width: 100%;
+  height: 100%;
+  padding: 0 0 0 1rem;
+  background: #474aff;
+  border: none;
+  outline: none;
+}
+
+#patient-search::placeholder {
+  color: white;
+  opacity: 0.7;
+}
+
+.x-clear:hover {
+  cursor: pointer;
+}

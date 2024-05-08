@@ -1,0 +1,17 @@
+.editable-buttons-container {
+  .editable-button {
+    margin-right: 8px;
+    margin-bottom: 4px;
+    display: inline-block;
+    background-color: #edf2f7;
+    padding: 4px 8px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 4px;
+
+    &.required:after {
+      content: ' *';
+      color: #f00;
+    }
+  }
+}

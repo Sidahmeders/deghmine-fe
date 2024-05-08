@@ -1,0 +1,21 @@
+.month-range-picker,
+.date-range-picker {
+  outline: none;
+  text-align: center;
+  padding: 2px 6px;
+  border: 1px solid gray;
+  border-radius: 6px;
+}
+
+.react-datepicker__navigation-icon,
+.react-datepicker__navigation-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #ddd;
+  border: 1px solid #999;
+  border-radius: 3px;
+
+  &:before {
+    display: none;
+  }
+}

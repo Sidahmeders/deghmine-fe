@@ -1,0 +1,23 @@
+.data-table-container {
+  position: relative;
+
+  .sc-hUOJWJ {
+    padding: 0 !important;
+  }
+
+  .data-table {
+    .rdt_Table {
+      min-height: 25rem;
+    }
+
+    .rdt_TableBody {
+      min-width: 60rem;
+      overflow-y: auto;
+      max-height: 74vh;
+    }
+
+    .rdt_TableCell {
+      font-size: 1rem;
+    }
+  }
+}

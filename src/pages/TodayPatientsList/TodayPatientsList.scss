@@ -1,0 +1,84 @@
+.today-patients-list-page-container {
+  width: 100%;
+  background-color: white;
+  padding: 0 0.75rem;
+
+  .room-container {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 0.5rem);
+    overflow-x: auto;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+
+    .expected-appointments-container,
+    .waiting-room-appointments-container,
+    .done-appointments-container {
+      min-width: 28rem;
+      margin-right: 1rem;
+      padding: 0.5rem;
+      padding-bottom: 0;
+      flex: 1;
+      height: 100%;
+      overflow-y: auto;
+
+      &:nth-child(1) > :first-child {
+        border-top: 2px solid #0084ff;
+        color: #0084ff;
+        .circle {
+          background-color: #0084ff;
+        }
+      }
+
+      &:nth-child(2) > :first-child {
+        border-top: 2px solid #ac2020;
+        color: #ac2020;
+        .circle {
+          background-color: #ac2020;
+        }
+      }
+
+      &:nth-child(3) > :first-child {
+        border-top: 2px solid #0bbe98;
+        color: #0bbe98;
+        .circle {
+          background-color: #0bbe98;
+        }
+      }
+
+      .cards-container {
+        height: 90%;
+        overflow-y: auto;
+
+        .card-container {
+          background-color: #ddd2;
+          margin-top: 0.5rem;
+
+          &.confirmed {
+            background-color: #20ac2033;
+            button:nth-child(1) {
+              color: #20ac20;
+            }
+          }
+
+          &.left {
+            background-color: #f3ad2a33;
+            button:nth-child(2) {
+              color: #da9414;
+            }
+          }
+
+          .payments-input {
+            margin-top: 0.5rem;
+            label {
+              font-weight: 500;
+              color: #a27beb;
+            }
+          }
+        }
+      }
+    }
+  }
+}

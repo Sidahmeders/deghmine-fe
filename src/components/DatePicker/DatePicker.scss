@@ -1,0 +1,10 @@
+.react-date-picker {
+  z-index: 99;
+  border: 1px solid gray;
+  border-radius: 6px;
+  padding: 2px 6px;
+
+  input {
+    outline: none;
+  }
+}

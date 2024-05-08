@@ -1,0 +1,45 @@
+.top-navigation-container {
+  position: fixed;
+  z-index: 999;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  border-radius: 5rem;
+  padding: 0.75rem 0;
+  box-shadow: 0 0 5px #dddd;
+  display: flex;
+  justify-content: space-evenly;
+
+  .save-icon,
+  a {
+    border: 1px solid #020f5c56;
+    border-radius: 50%;
+    background: #474aff11;
+    padding: 6px 8px 6px;
+    margin: 0 0.75rem;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  svg {
+    width: 1.75rem;
+    height: 1.75rem;
+    color: #474aff;
+    transition: fill 0.2s ease-in-out, color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  }
+
+  .selected {
+    border-color: transparent;
+    background: #f05c18d3;
+    box-shadow: 0 0 15px #f70c0c;
+
+    svg {
+      fill: #f39c74d3;
+      color: #fbfcf2;
+      transition: fill 0.2s ease-in-out, color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    }
+  }
+}
