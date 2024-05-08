@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
-import { AlertCircle, CheckCircle, FileMinus, FilePlus, DollarSign } from 'react-feather'
+import { AlertCircle, CheckCircle, FileMinus, FilePlus, DollarSign, Clipboard } from 'react-feather'
 import {
   ModalBody,
   ModalFooter,
@@ -233,19 +233,9 @@ export default function AddAppointmentBody({ selectedSlotInfo, handleClose, setE
               control={control}
               name={CREATE_APPOINTMENT_NAMES.TITLE}
               defaultValue=""
-              rules={{ required: true }}
               render={({ field: { onChange, value } }) => (
                 <InputGroup>
-                  <InputLeftElement
-                    pointerEvents="none"
-                    children={
-                      value?.length >= 2 && value?.length <= 50 ? (
-                        <CheckCircle size="1.25rem" color="green" />
-                      ) : (
-                        <AlertCircle size="1.25rem" color="red" />
-                      )
-                    }
-                  />
+                  <InputLeftElement pointerEvents="none" children={<Clipboard size="1.25rem" color="gray" />} />
                   <Input
                     type="text"
                     placeholder="Acte du rendez-vous"
