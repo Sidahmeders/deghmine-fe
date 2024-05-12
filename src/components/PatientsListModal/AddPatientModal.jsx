@@ -20,7 +20,7 @@ import {
 import { isValid } from 'date-fns'
 
 import { AppointmentsState } from '@context'
-import { getLocalUser, setPageRoute } from '@utils'
+import { getLocalUser, setPageRoute, setBookmarkPatient } from '@utils'
 import { APP_ROUTES, CREATE_PATIENT_NAMES } from '@config'
 import { createPatient } from '@services/patients'
 import { useState } from 'react'
@@ -51,6 +51,7 @@ export default function AddPatientModal({ children }) {
         totalCount: patientsData.totalCount + 1,
       }))
       setBookMarkedPatient(createdPatient)
+      setBookmarkPatient(createdPatient)
       setPageRoute(APP_ROUTES.CALENDAR)
       navigate(APP_ROUTES.CALENDAR)
       toast({ title: 'nouveau patient créé avec succès', status: 'success' })

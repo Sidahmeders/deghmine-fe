@@ -3,7 +3,7 @@ import { useToast } from '@chakra-ui/react'
 import { isEmpty } from 'lodash'
 
 import { APPOINTMENTS_IDS } from '../config'
-import { flattenAppointment, formatDate, getLocalUser } from '@utils'
+import { flattenAppointment, formatDate, getLocalUser, getBookmarkPatient } from '@utils'
 import { fetchDayAppointments } from '@services/appointments'
 import { fetchDayPayments } from '@services/payments'
 
@@ -19,7 +19,7 @@ export const AppointmentsProvider = ({ children }) => {
   const [todayPaymentHistory, setTodayPaymentHistory] = useState([])
   const [selectedDate, setSelectedDate] = useState(formatDate(new Date()))
   const [patientsData, setPatientsData] = useState([])
-  const [bookMarkedPatient, setBookMarkedPatient] = useState({})
+  const [bookMarkedPatient, setBookMarkedPatient] = useState(getBookmarkPatient())
 
   const fetchWorkAppointments = async () => {
     const todayAppointments = await fetchDayAppointments(selectedDate)

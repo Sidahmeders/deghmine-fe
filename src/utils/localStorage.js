@@ -4,6 +4,7 @@ import { guid } from '@utils'
 const CONFIRM_TOKEN = 'confirm-token'
 const USER = 'userInfo'
 const PATIENT = 'patient'
+const BOOKMARKED_PATIENT = 'bookmarked-patient'
 const PAGE_ROUTE = 'pageRoute'
 const MOTIF_TEMPLATE_BUTTONS = 'motifTemplateButtons'
 const CHAT_TEMPLATE_BUTTONS = 'chatTemplateButtons'
@@ -19,6 +20,9 @@ export const removeLocalUser = () => localStorage.removeItem(USER)
 
 export const getPatient = () => JSON.parse(localStorage.getItem(PATIENT)) || {}
 export const setPatient = (patient) => localStorage.setItem(PATIENT, JSON.stringify(patient))
+
+export const getBookmarkPatient = () => JSON.parse(localStorage.getItem(BOOKMARKED_PATIENT)) || {}
+export const setBookmarkPatient = (patient) => localStorage.setItem(BOOKMARKED_PATIENT, JSON.stringify(patient))
 
 export const getPageRoute = () => localStorage.getItem(PAGE_ROUTE) || '/'
 export const setPageRoute = (route) => localStorage.setItem(PAGE_ROUTE, route)

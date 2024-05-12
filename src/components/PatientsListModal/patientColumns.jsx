@@ -1,6 +1,6 @@
 import { Trash2, Edit, Bookmark } from 'react-feather'
 
-import { setPatient, formatDate, formatPhoneNumber, setPageRoute } from '@utils'
+import { setPatient, formatDate, formatPhoneNumber, setPageRoute, setBookmarkPatient } from '@utils'
 import { APP_ROUTES } from '@config'
 
 export const patientColumns = ({
@@ -49,6 +49,7 @@ export const patientColumns = ({
 
       const onBookmarkPatient = () => {
         setBookMarkedPatient(row)
+        setBookmarkPatient(row)
         onPatientsModalClose()
         setPageRoute(APP_ROUTES.CALENDAR)
         navigate('/calendar')
