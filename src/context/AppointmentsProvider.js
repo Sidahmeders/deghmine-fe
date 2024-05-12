@@ -19,6 +19,7 @@ export const AppointmentsProvider = ({ children }) => {
   const [todayPaymentHistory, setTodayPaymentHistory] = useState([])
   const [selectedDate, setSelectedDate] = useState(formatDate(new Date()))
   const [patientsData, setPatientsData] = useState([])
+  const [bookMarkedPatient, setBookMarkedPatient] = useState({})
 
   const fetchWorkAppointments = async () => {
     const todayAppointments = await fetchDayAppointments(selectedDate)
@@ -76,6 +77,8 @@ export const AppointmentsProvider = ({ children }) => {
         setSelectedDate,
         patientsData,
         setPatientsData,
+        bookMarkedPatient,
+        setBookMarkedPatient,
       }}>
       {children}
     </AppointmentsContext.Provider>

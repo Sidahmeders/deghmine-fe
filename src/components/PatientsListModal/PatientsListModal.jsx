@@ -1,4 +1,5 @@
 import { useEffect, useState, useMemo } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
   useDisclosure,
   Modal,
@@ -30,8 +31,9 @@ import AddPatientModal from './AddPatientModal'
 import './PatientsListModal.scss'
 
 export default function PatientListModal() {
-  const { patientsData, setPatientsData } = AppointmentsState()
+  const { patientsData, setPatientsData, bookMarkedPatient, setBookMarkedPatient } = AppointmentsState()
   const toast = useToast()
+  const navigate = useNavigate()
   const { isOpen: isPatientsModalOpen, onOpen: onPatientsModalOpen, onClose: onPatientsModalClose } = useDisclosure()
   const { isOpen: isEditModalOpen, onOpen: onEditModalOpen, onClose: ondEditModalClose } = useDisclosure()
   const { isOpen: isDeleteModalOpen, onOpen: onDeleteModalOpen, onClose: onDeleteModalClose } = useDisclosure()
@@ -102,7 +104,14 @@ export default function PatientListModal() {
           <ModalBody>
             <DataTable
               loading={isLoading}
-              columns={patientColumns({ onEditModalOpen, onDeleteModalOpen })}
+              columns={patientColumns({
+                onEditModalOpen,
+                onDeleteModalOpen,
+                bookMarkedPatient,
+                setBookMarkedPatient,
+                navigate,
+                onPatientsModalClose,
+              })}
               data={patientsData.patients}
               subHeaderComponent={subHeaderComponent}
               expandableRowsComponent={ExpandableComponent}

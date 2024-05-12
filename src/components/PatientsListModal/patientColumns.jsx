@@ -1,8 +1,15 @@
-import { Trash2, Edit3 } from 'react-feather'
+import { Trash2, Edit, Bookmark } from 'react-feather'
 
 import { setPatient, formatDate, formatPhoneNumber } from '@utils'
 
-export const patientColumns = ({ onEditModalOpen, onDeleteModalOpen }) => [
+export const patientColumns = ({
+  onEditModalOpen,
+  onDeleteModalOpen,
+  bookMarkedPatient,
+  setBookMarkedPatient,
+  navigate,
+  onPatientsModalClose,
+}) => [
   {
     name: 'Nom',
     selector: ({ fullName }) => fullName,
@@ -39,9 +46,18 @@ export const patientColumns = ({ onEditModalOpen, onDeleteModalOpen }) => [
         onDeleteModalOpen()
       }
 
+      const onBookmarkPatient = () => {
+        setBookMarkedPatient(row)
+        onPatientsModalClose()
+        navigate('/calendar')
+      }
+
+      const isBookmarked = bookMarkedPatient._id === row._id
+
       return (
         <div className="actions-cell">
-          <Edit3 onClick={onEditClick} width={20} color="#474aff" />
+          <Bookmark onClick={onBookmarkPatient} width={22} color="#fa0" fill={isBookmarked ? '#fa0' : '#fa02'} />
+          <Edit onClick={onEditClick} width={20} color="#474aff" />
           <Trash2 onClick={onDeleteClick} width={20} color="#d00" />
         </div>
       )

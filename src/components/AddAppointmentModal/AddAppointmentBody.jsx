@@ -21,7 +21,7 @@ import {
 import Select from 'react-select'
 import { isEmpty, omit } from 'lodash'
 
-import { ChatState } from '@context'
+import { ChatState, AppointmentsState } from '@context'
 import { CREATE_APPOINTMENT_NAMES, CREATE_PAYMENT_NAMES, APPOINTMENT_EVENT_LISTENERS } from '@config'
 import { getMotifTemplateButtons, getLocalUser, formatDate } from '@utils'
 import { createAppointment, relateAppointment } from '@services/appointments'
@@ -43,6 +43,7 @@ export default function AddAppointmentBody({ selectedSlotInfo, handleClose, setE
   const { start, end } = selectedSlotInfo
   const toast = useToast()
   const { socket } = ChatState()
+  const { bookMarkedPatient } = AppointmentsState()
   const motifRadioOptions = getMotifTemplateButtons()
   const {
     handleSubmit,
@@ -157,6 +158,10 @@ export default function AddAppointmentBody({ selectedSlotInfo, handleClose, setE
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchName])
+
+  useEffect(() => {
+    setPatientOptions(resolvePatientOptions([bookMarkedPatient]))
+  }, [bookMarkedPatient])
 
   return (
     <Loader loading={isLoading}>
