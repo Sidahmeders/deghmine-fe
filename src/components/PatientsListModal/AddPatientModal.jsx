@@ -1,4 +1,5 @@
 import { useForm, Controller } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 import { Textarea, useDisclosure } from '@chakra-ui/react'
 import { AlertCircle, CheckCircle, Clipboard } from 'react-feather'
 import {
@@ -19,18 +20,19 @@ import {
 import { isValid } from 'date-fns'
 
 import { AppointmentsState } from '@context'
-import { getLocalUser } from '@utils'
-import { CREATE_PATIENT_NAMES } from '@config'
+import { getLocalUser, setPageRoute } from '@utils'
+import { APP_ROUTES, CREATE_PATIENT_NAMES } from '@config'
 import { createPatient } from '@services/patients'
 import { useState } from 'react'
 
 const initialValues = Object.values(CREATE_PATIENT_NAMES).reduce((prev, curr) => ({ ...prev, [curr]: '' }), {})
 
 export default function AddPatientModal({ children }) {
-  const { setPatientsData } = AppointmentsState()
+  const { setPatientsData, setBookMarkedPatient } = AppointmentsState()
   const localUser = getLocalUser()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const toast = useToast()
+  const navigate = useNavigate()
   const {
     handleSubmit,
     control,
@@ -48,6 +50,9 @@ export default function AddPatientModal({ children }) {
         patients: [createdPatient, ...patientsData.patients],
         totalCount: patientsData.totalCount + 1,
       }))
+      setBookMarkedPatient(createdPatient)
+      setPageRoute(APP_ROUTES.CALENDAR)
+      navigate(APP_ROUTES.CALENDAR)
       toast({ title: 'nouveau patient créé avec succès', status: 'success' })
       reset(initialValues)
       onClose()
